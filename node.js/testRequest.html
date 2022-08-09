@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Test Scripts</title>
+</head>
+
+<body>
+  
+     <!--script to add a user
+  -->
+  <script>
+	const url = 'http://coms-319-t42.cs.iastate.edu:8080/addUser';
+	const data={
+		firstname: 'test',
+		lastname: 'user',
+		username: 'tuser',
+		email: 'tuser@gmail.com',
+		psw: 'goodpass'
+	};
+	
+	const otherParam={
+		headers:{
+			"content-type":"application/json; charset=UTF-8"
+		},
+		body: JSON.stringify(data),
+		method:"POST",
+		mode: 'cors',
+	};
+	
+	fetch(url,otherParam)
+	.then(response => response.json())
+	.then(data => {
+		console.log(data.newBody);
+	})
+	.catch((err)=>console.log(err))
+	
+  </script>
+  
+    <!--script to add a book to a user
+  -->
+<!--   <script>
+	const url = 'http://localhost:8080/addBook';
+	const data={
+		userid: 1,
+		isbn: 3141
+	};
+	
+	const otherParam={
+		headers:{
+			"content-type":"application/json; charset=UTF-8"
+		},
+		body: JSON.stringify(data),
+		method:"POST",
+		mode: 'no-cors',
+	};
+	
+	fetch(url,otherParam)
+	.then(data=>{return data.json()})
+	.then(res=>{console.log(res)})
+	.catch(error=>console.log(error))
+  </script> -->
+  
+  <!--script to verify that a user exists, for login
+  -->
+  <!-- <script>
+	const url = 'http://localhost:8080/verify';
+	const data={
+		username: 'jmartin3',
+		psw: '123abc'
+	};
+	
+	const otherParam={
+		headers:{
+			"content-type":"application/json; charset=UTF-8",
+		},
+		body: JSON.stringify(data),
+		method:"POST",
+		mode: 'no-cors',
+	};
+	
+	fetch(url,otherParam)
+	.then(response =>{
+		return response.text()
+	})
+	.then(data => {
+		console.log(data ? JSON.parse(data) : {})
+	})
+	.catch((error) => {
+		console.log(error)
+	});
+  </script> -->
+  
+</body>
+
+</html>

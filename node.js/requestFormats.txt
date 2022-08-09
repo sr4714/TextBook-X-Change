@@ -1,0 +1,102 @@
+Here are the url, request format, and response format for each backend request that is currently supported
+All requests are POST right now, should fix in the future
+
+Base URL: http://coms-319-t42.cs.iastate.edu:8080/?
+
+Add a user:
+	url: /addUser
+	request body:{
+   			 "firstname": "test",
+   			 "lastname": "user",
+   			 "username": "nuser",
+    			"email": "nuser@gmail.com",
+   			 "psw": "badpassword"
+		}
+	response body:{
+   			 "firstname": "test",
+  			 "lastname": "user",
+    			"username": "nuser",
+    			"email": "nuser@gmail.com",
+    			"psw": "badpassword",
+			"userid": "1"
+		}
+
+Verify a user for login:
+	url: /verify
+	request body:{
+    			"username": "jmartin3",
+    			"psw": "123abc"
+		}
+	response body:{
+   			 "username": "jmartin3",
+    			"psw": "123abc"
+		}
+		null otherwise
+
+Add a book:
+	url: /addBook
+	request body:{
+    			"userid": "1",
+   			 "isbn": "3135"
+		}
+	response body:{
+    			"userid": "1",
+   			 "isbn": "3135",
+			"bookid": "1"
+		}
+
+Get all of the books listed by a seller:
+	url: /getMyBooks
+	request header:{
+			"userid": "1"
+	}
+	response body:[{
+    			"userid": "1",
+   			 "isbn": "3135",
+			"bookid": "1"
+		}
+			{
+    			"userid": "1",
+   			 "isbn": "1234",
+			"bookid": "2"
+		}]
+
+Get all of the books with a certain isbn:
+	url: /getBooksISBN
+	request header:{
+			"isbn": "1"
+	}
+	response body:[{
+    			"userid": "1",
+   			 "isbn": "1234",
+			"bookid": "1"
+		}
+			{
+    			"userid": "2",
+   			 "isbn": "1234",
+			"bookid": "2"
+		}]
+
+Get all of the books on the DB
+	url: /getAllBooks
+	response body:[{
+    			"userid": "1",
+   			 "isbn": "1234",
+			"bookid": "1"
+		}
+			{
+    			"userid": "2",
+   			 "isbn": "3145",
+			"bookid": "2"
+		}]
+
+Remove a book from by its id
+	url: /removeBook
+	request header:{
+			"bookid": "1"
+	}
+	response body:{
+    			"userid": "1",
+   			 "isbn": "3135",
+			"bookid": "1"
+		}
